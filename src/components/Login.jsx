@@ -5,7 +5,10 @@ const Login = () => {
   return (
     <div className="Login">
 
-      login
+      <p>login</p>
+      <input id='signupUsername' type="text" placeholder="username" />
+      <input id='signupPassword' type="text" placeholder="password" />
+      <p className='submitLog'>submit</p>
 
     </div>
   );
