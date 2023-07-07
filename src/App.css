@@ -4,3 +4,9 @@
   margin: 4em;
   background-color: yellow;
 }
+
+.uname {
+  font-size: 2em;
+  background-color: red;
+  display: inline-block;
+}

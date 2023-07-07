@@ -13,6 +13,9 @@ const NavBar = () => {
         <Link className="Navbar-link" to="/users">
           users
         </Link>
+        <Link className="Navbar-link" to="/cats">
+          cats
+        </Link>
         <Link className="Navbar-link" to="/register">
           Register
         </Link>
