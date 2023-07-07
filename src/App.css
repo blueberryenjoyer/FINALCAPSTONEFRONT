@@ -7,6 +7,12 @@
 
 .uname {
   font-size: 2em;
-  background-color: red;
+  background-color: lightcoral;
+  display: inline-block;
+}
+
+.cname {
+  font-size: 2em;
+  background-color: lightblue;
   display: inline-block;
 }

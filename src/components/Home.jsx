@@ -21,7 +21,7 @@ const Home = () => {
             <img id="homephoto" src="https://i.kym-cdn.com/photos/images/newsfeed/001/018/866/e44.png" alt="stock photo" />
             home page!
 
-            <p onClick={() => { auth() }} className='serverhealthbutton'>does the server work?</p>
+            <p onClick={() => { auth() }} className='serverhealthbutton'>does the server work? click me!</p>
 
 
         </div>
