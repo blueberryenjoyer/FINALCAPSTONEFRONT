@@ -11,10 +11,13 @@ const NavBar = () => {
           Home
         </Link>
         <Link className="Navbar-link" to="/users">
-          users
+          Users
         </Link>
         <Link className="Navbar-link" to="/cats">
-          cats
+          Cats
+        </Link>
+        <Link className="Navbar-link" to="/reviews">
+          Reviews
         </Link>
         <Link className="Navbar-link" to="/register">
           Register

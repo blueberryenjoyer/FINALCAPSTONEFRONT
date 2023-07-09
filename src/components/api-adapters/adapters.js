@@ -20,3 +20,14 @@ export const grabCats = async () => {
         console.log(error);
     }
 };
+
+export const grabReviews = async () => {
+    try {
+        const response = await fetch(`http://localhost:4343/api/reviews`);
+        return response
+        // const translatedData = await response.json();
+        // return translatedData.data.posts;
+    } catch (error) {
+        console.log(error);
+    }
+};
