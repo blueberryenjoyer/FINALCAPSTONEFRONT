@@ -22,3 +22,21 @@
   background-color: greenyellow;
   display: inline-block;
 }
+
+.submitRegister {
+  font-size: 2em;
+  background-color: grey;
+  display: inline-block;
+}
+
+.submitLogin {
+  font-size: 2em;
+  background-color: grey;
+  display: inline-block;
+}
+
+.submitLogout {
+  font-size: 2em;
+  background-color: darkgrey;
+  display: inline-block;
+}
