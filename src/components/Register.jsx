@@ -1,4 +1,18 @@
 import React from "react";
+import { createUser } from "./api-adapters/adapters";
+
+
+
+async function doSignup() { //creating users is currently working. :)
+  let name = (document.getElementById('signupName')).value
+  let password = (document.getElementById('signupPassword')).value
+  let email = (document.getElementById('signupEmail')).value
+  createUser(name, password, email)
+}
+
+
+
+
 
 const Register = () => {
 
@@ -7,9 +21,10 @@ const Register = () => {
 
 
       <p>register</p>
-      <input id='signupUsername' type="text" placeholder="username" />
+      <input id='signupName' type="text" placeholder="name" />
       <input id='signupPassword' type="text" placeholder="password" />
-      <p className='submitReg'>submit</p>
+      <input id='signupEmail' type="text" placeholder="email" />
+      <p className='submitReg' onClick={doSignup}>submit. this is a button.</p>
 
     </div>
   );
