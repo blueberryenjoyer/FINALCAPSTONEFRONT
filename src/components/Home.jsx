@@ -1,4 +1,7 @@
-const Home = () => {
+import { auth } from "./api-adapters/adapters";
+
+
+const Home = ({ user }) => {
 
 
     async function health() {
@@ -7,20 +10,6 @@ const Home = () => {
             console.log(response)
             alert(response.statusText)
 
-        } catch (err) { console.error(err); }
-    }
-    async function auth() {
-        try {
-            let token = localStorage.getItem("token");
-            const response = await fetch(`http://localhost:4343/api/authenticateToken`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "tokenHeaderKey": token
-                },
-            });
-            console.log(response)
-            alert(response.statusText)
         } catch (err) { console.error(err); }
     }
 
@@ -34,7 +23,7 @@ const Home = () => {
             home page!
 
             <p onClick={() => { health() }} className='serverhealthbutton'>does the server work? click me!</p>
-            <p onClick={() => { auth() }} className='serverauthbutton'>am i authenticated? click me!</p>
+            <p onClick={() => { auth(user) }} className='serverauthbutton'>am i authenticated? click me!</p>
 
         </div>
 

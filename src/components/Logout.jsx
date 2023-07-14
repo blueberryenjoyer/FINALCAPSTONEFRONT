@@ -2,13 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const Logout = ({ loggedin, setLoggedin }) => {
+const Logout = ({ setLoggedin, setUser }) => {
 
     const navigate = useNavigate()
 
     async function doLogout() {
         localStorage.removeItem("token")
         setLoggedin(false)
+        setUser('')
         alert("you are now logged out")
         navigate("/cats");
     }

@@ -40,3 +40,9 @@
   background-color: darkgrey;
   display: inline-block;
 }
+
+.submitNewcat {
+  font-size: 2em;
+  background-color: darkgrey;
+  display: inline-block;
+}

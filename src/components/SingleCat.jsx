@@ -1,43 +1,47 @@
 import React from "react";
-import { grabCats } from "./api-adapters/adapters";
+import { grabCatById } from "./api-adapters/adapters";
 import { useState, useEffect } from "react";
-import UploadCat from "./CreateCat";
-import { Link } from "react-router-dom";
 
-const Cats = () => {
+const SingleCat = () => {
 
-
-    //copied from Users
 
     const [cats, setCats] = useState([]);
-    const [magic, setMagic] = useState([]);
 
 
-    useEffect(() => { //REACT IS MAGIC! I AM A WIZARD! I HAVE NO IDEA WHAT IM DOING BUT IT WORKS!!!! AHAAAAHHA
+    useEffect(() => {
         const lol = async () => {
             try {
-                const results = await grabCats()
+                // let spliceme = location.pathname
+                // console.log(spliceme)
+                // let split_string = spliceme.split("/")
+                // console.log(split_string)
+                // let third_string = split_string.slice(2, 1)
+                // console.log(third_string)
+                const results = await grabCatById(1)
+                console.log(results)
                 const result2 = await results.json()
+                console.log(result2)
                 setCats(result2)
             } catch (error) {
                 console.log(error);
             }
         };
         lol()
-    }, [magic]); //magic!!!!!!!!
+    }, []);
+
+
 
     console.log(cats)
 
     return (
 
+
+
         <div className={`cats`}>
-            <UploadCat setMagic={setMagic} />
-            <Link className="Navbar-link" to="/createcat">
-                Use Detailed Cat Uploader
-            </Link>
+            this page is currently in development. urls and stuff are hard
             <ul>
                 {cats.length > 0 ? (
-                    cats.map((u) => (
+                    cats.map((u) => ( //this was made for an array. it should have an array of 1 object.
                         <>
                             <li className="cname">{u.name}</li>
                             <li >{"id: " + u.id}</li>
@@ -56,4 +60,4 @@ const Cats = () => {
 
 }
 
-export default Cats;
+export default SingleCat;

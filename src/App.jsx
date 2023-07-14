@@ -7,14 +7,15 @@ import Home from './components/Home';
 import Users from './components/Users';
 import Cats from './components/Cats';
 import Reviews from './components/Reviews';
+import UploadCat from './components/CreateCat';
+import SingleCat from './components/SingleCat';
 import { Routes, Route, Router } from "react-router-dom";
 import { useState } from 'react';
 
 function App() {
 
-  const [loggedin, setLoggedin] = useState(false) //i only need this to force the navbar to update
-
-
+  const [loggedin, setLoggedin] = useState(localStorage.getItem("token")) //checks if there is a token on startup
+  const [user, setUser] = useState('')
 
   return (
     <>
@@ -22,15 +23,20 @@ function App() {
       <>
 
         <div className="App">
-          <NavBar loggedin={loggedin} setLoggedin={setLoggedin} />
+          <NavBar loggedin={loggedin} />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home user={user} />} />
             <Route path="/Users" element={<Users />} />
-            <Route path="/Cats" element={<Cats />} />
             <Route path="/Reviews" element={<Reviews />} />
             <Route path="/Register" element={<Register />} />
-            <Route path="/Login" element={<Login loggedin={loggedin} setLoggedin={setLoggedin} />} />
-            <Route path="/Logout" element={<Logout loggedin={loggedin} setLoggedin={setLoggedin} />} />
+            <Route path="/Login" element={<Login setLoggedin={setLoggedin} setUser={setUser} />} />
+            <Route path="/Logout" element={<Logout setLoggedin={setLoggedin} setUser={setUser} />} />
+
+
+
+            <Route path="/Cats" element={<Cats />} />
+            <Route path="/Createcat" element={<UploadCat />} />
+            <Route path="/Cat" element={<SingleCat />} />
           </Routes>
         </div>
 

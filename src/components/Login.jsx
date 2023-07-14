@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const Login = ({ loggedin, setLoggedin }) => {
+const Login = ({ setLoggedin, setUser }) => {
 
   const navigate = useNavigate()
 
@@ -18,7 +18,8 @@ const Login = ({ loggedin, setLoggedin }) => {
     let newToken = loginUser(name, password)
     localStorage.setItem("token", await newToken);
     setLoggedin(true)
-    alert("you are now logged in")
+    setUser(name)
+    alert(await newToken)
     navigate("/cats");
   }
 
