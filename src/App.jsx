@@ -36,7 +36,10 @@ function App() {
 
             <Route path="/Cats" element={<Cats />} />
             <Route path="/Createcat" element={<UploadCat />} />
-            <Route path="/Cat" element={<SingleCat />} />
+            <Route path="/Cat">
+              <Route path=":catId" element={<SingleCat />} />
+            </Route>
+
           </Routes>
         </div>
 

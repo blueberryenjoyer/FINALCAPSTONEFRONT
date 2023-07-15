@@ -15,7 +15,7 @@ const NavBar = ({ loggedin, setLoggedin }) => {
         <Link className="Navbar-link" to="/cats">
           Cats
         </Link>
-        <Link className="Navbar-link" to="/cat">
+        <Link className="Navbar-link" to="/cat/1">
           Cat
         </Link>
         <Link className="Navbar-link" to="/reviews">

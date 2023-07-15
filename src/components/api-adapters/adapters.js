@@ -119,12 +119,11 @@ export const createCat = async (name, description, dangerous, uploader) => {
     }
 };
 
-export const grabCatById = async (id) => {
+export const grabCatById = async (id) => { //we are receiving a number
     try {
         console.log('we got to adapters')
         console.log(id)
-        //const response = await fetch(`${BASE_URL}/cat/?id=${id}`); //THIS IS not working
-        const response = await fetch(`${BASE_URL}/cat`)
+        const response = await fetch(`${BASE_URL}/cat/${id}`); //we are sending api/cat/50
         console.log('we got through adapters')
         return response
     } catch (error) {
