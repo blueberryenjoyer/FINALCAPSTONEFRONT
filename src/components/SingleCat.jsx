@@ -76,7 +76,7 @@ const SingleCat = () => {
                         </>
                     ))
                 ) : (
-                    <li>loading</li>
+                    <li>this cat doesnt exist</li>
                 )}
             </ul>
             <button onClick={doPrev}>prev</button> <button onClick={doNext}>next</button>

@@ -39,7 +39,9 @@ const Cats = () => {
                 {cats.length > 0 ? (
                     cats.map((u) => (
                         <>
-                            <li className="cname">{u.name}</li>
+                            <li className="cname"><Link to={`/cat/${u.id}`}>
+                                {u.name}
+                            </Link></li>
                             <li >{"id: " + u.id}</li>
                             <li >{"description: " + u.description}</li>
                             <li >{"dangerous: " + u.dangerous}</li>
