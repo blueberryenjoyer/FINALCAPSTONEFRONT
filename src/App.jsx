@@ -7,7 +7,6 @@ import Home from './components/Home';
 import Users from './components/Users';
 import Cats from './components/Cats';
 import Reviews from './components/Reviews';
-import UploadCat from './components/CreateCat';
 import SingleCat from './components/SingleCat';
 import { Routes, Route, Router } from "react-router-dom";
 import { useState } from 'react';
@@ -23,21 +22,20 @@ function App() {
       <>
 
         <div className="App">
-          <NavBar loggedin={loggedin} />
+          <NavBar loggedin={loggedin} user={user} />
           <Routes>
             <Route path="/" element={<Home user={user} />} />
             <Route path="/Users" element={<Users />} />
             <Route path="/Reviews" element={<Reviews />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/Login" element={<Login setLoggedin={setLoggedin} setUser={setUser} />} />
-            <Route path="/Logout" element={<Logout setLoggedin={setLoggedin} setUser={setUser} />} />
+            <Route path="/Logout" element={<Logout setLoggedin={setLoggedin} setUser={setUser} user={user} />} />
 
 
 
-            <Route path="/Cats" element={<Cats />} />
-            <Route path="/Createcat" element={<UploadCat />} />
+            <Route path="/Cats" element={<Cats user={user} />} />
             <Route path="/Cat">
-              <Route path=":catId" element={<SingleCat />} />
+              <Route path=":catId" element={<SingleCat user={user} />} />
             </Route>
 
           </Routes>

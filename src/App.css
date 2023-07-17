@@ -46,3 +46,9 @@
   background-color: darkgrey;
   display: inline-block;
 }
+
+.submitUpdatecat {
+  font-size: 2em;
+  background-color: darkgrey;
+  display: inline-block;
+}

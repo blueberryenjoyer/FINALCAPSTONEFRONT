@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = ({ loggedin, setLoggedin }) => {
+const NavBar = ({ loggedin, user }) => {
 
   return (
     <div className="NavBar">
@@ -15,9 +15,6 @@ const NavBar = ({ loggedin, setLoggedin }) => {
         <Link className="Navbar-link" to="/cats">
           Cats
         </Link>
-        <Link className="Navbar-link" to="/cat/1">
-          Cat
-        </Link>
         <Link className="Navbar-link" to="/reviews">
           Reviews
         </Link>
@@ -25,7 +22,7 @@ const NavBar = ({ loggedin, setLoggedin }) => {
         {loggedin ? (
           <>
             <Link className="Navbar-link" to="/logout">
-              Logout
+              Profile({user})
             </Link>
           </>
         ) : (

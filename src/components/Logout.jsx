@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const Logout = ({ setLoggedin, setUser }) => {
+const Logout = ({ setLoggedin, setUser, user }) => {
 
     const navigate = useNavigate()
 
@@ -15,9 +15,12 @@ const Logout = ({ setLoggedin, setUser }) => {
     }
 
     return ( //and on the backend, handling bad inputs needs work. crashes the server.
-        <div className="Logout">
-            <p className='submitLogout' onClick={doLogout}>logout. this is a button.</p>
-        </div>
+        <>
+            <h1>{user}</h1>
+            <div className="Logout">
+                <p className='submitLogout' onClick={doLogout}>logout. this is a button.</p>
+            </div>
+        </>
     );
 };
 

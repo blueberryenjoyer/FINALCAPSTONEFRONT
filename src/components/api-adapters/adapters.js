@@ -89,26 +89,28 @@ export const auth = async (name) => {
             })
         });
         console.log(response)
-        alert(response.statusText)
+        console.log(response.ok)
+        return response.ok
     } catch (err) { console.error(err); }
 }
 
 
 
 export const createCat = async (name, description, dangerous, uploader) => {
-    console.log(name, description, dangerous, uploader)
+    console.log(name, description, dangerous, uploader) //it will RECEIVE a user which is a string instead of a number for uploader
 
     try {
         const response = await fetch(`${BASE_URL}/createcat`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "tokenHeaderKey": localStorage.getItem("token")
             },
             body: JSON.stringify({
                 name: name,
                 description: description,
                 dangerous: dangerous,
-                uploader: uploader,
+                uploader: uploader, //it will SEND a user which is a string instead of a number for uploader
             }),
         });
         const result = await response.json();
@@ -126,6 +128,54 @@ export const grabCatById = async (id) => { //we are receiving a number
         const response = await fetch(`${BASE_URL}/cat/${id}`); //we are sending api/cat/50
         console.log('we got through adapters')
         return response
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const updateCat = async (id, name, description, dangerous, uploader) => {
+    console.log(id, name, description, dangerous, uploader)
+
+    try {
+        const response = await fetch(`${BASE_URL}/updatecat`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "tokenHeaderKey": localStorage.getItem("token")
+            },
+            body: JSON.stringify({
+                id: id,
+                name: name,
+                description: description,
+                dangerous: dangerous,
+                uploader: uploader,
+            }),
+        });
+        const result = await response.json();
+
+        return result.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const deleteCatById = async (number, name) => { //currently doesnt work dont use
+    console.log(number, name)
+    try {
+        const response = await fetch(`${BASE_URL}/deletecat`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "tokenHeaderKey": localStorage.getItem("token")
+            },
+            body: JSON.stringify({
+                number: number,
+                name: name,
+            }),
+        });
+        const result = await response.json();
+
+        return result.data;
     } catch (error) {
         console.log(error);
     }

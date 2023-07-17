@@ -4,13 +4,15 @@ import { useState, useEffect } from "react";
 import UploadCat from "./CreateCat";
 import { Link } from "react-router-dom";
 
-const Cats = () => {
+const Cats = ({ user }) => {
 
 
     //copied from Users
 
     const [cats, setCats] = useState([]);
+    const [toggle, setToggle] = useState(false)
     const [magic, setMagic] = useState([]);
+    console.log(user)
 
 
     useEffect(() => { //REACT IS MAGIC! I AM A WIZARD! I HAVE NO IDEA WHAT IM DOING BUT IT WORKS!!!! AHAAAAHHA
@@ -26,31 +28,51 @@ const Cats = () => {
         lol()
     }, [magic]); //magic!!!!!!!!
 
+    const letThereBeCats = async () => {
+        try {
+            if (toggle === false) {
+                setToggle(true)
+            }
+            else { setToggle(false) }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     console.log(cats)
+    let reverseCats = cats.toReversed()
+    console.log(reverseCats)
 
     return (
 
         <div className={`cats`}>
-            <UploadCat setMagic={setMagic} />
-            <Link className="Navbar-link" to="/createcat">
-                Use Detailed Cat Uploader
-            </Link>
+
+
+            <button onClick={letThereBeCats}>create new cats</button>
+            {!toggle ? (
+                <>
+
+                </>
+            ) : (
+                <UploadCat user={user} setMagic={setMagic} />
+            )}
+
+
             <ul>
-                {cats.length > 0 ? (
-                    cats.map((u) => (
-                        <>
-                            <li className="cname"><Link to={`/cat/${u.id}`}>
-                                {u.name}
-                            </Link></li>
-                            <li >{"id: " + u.id}</li>
-                            <li >{"description: " + u.description}</li>
-                            <li >{"dangerous: " + u.dangerous}</li>
-                            <li >{"uploader: " + u.uploader}</li>
-                        </>
-                    ))
-                ) : (
-                    <li>loading</li>
-                )}
+                {
+                    reverseCats.length > 0 ? (
+                        reverseCats.map((u) => (
+                            <>
+                                <li className="cname"><Link to={`/cat/${u.id}`}>
+                                    {u.name}
+                                </Link></li>
+                                <li >{"description: " + u.description}</li>
+                                <li >{"dangerous: " + u.dangerous}</li>
+                            </>
+                        ))
+                    ) : (
+                        <li>loading</li>
+                    )}
             </ul>
         </div>
     )

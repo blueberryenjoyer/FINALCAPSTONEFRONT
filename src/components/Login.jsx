@@ -1,5 +1,5 @@
 import React from "react";
-import { loginUser } from "./api-adapters/adapters";
+import { loginUser, auth } from "./api-adapters/adapters";
 import { useNavigate } from "react-router-dom";
 
 
@@ -16,11 +16,20 @@ const Login = ({ setLoggedin, setUser }) => {
     let name = (document.getElementById('loginName')).value
     let password = (document.getElementById('loginPassword')).value
     let newToken = loginUser(name, password)
-    localStorage.setItem("token", await newToken);
-    setLoggedin(true)
-    setUser(name)
-    alert(await newToken)
-    navigate("/cats");
+    localStorage.setItem("token", await newToken)
+    const diditwork = await auth(name)
+    console.log('did it work?')
+    console.log(diditwork)
+    if (diditwork) {
+      setUser(name)
+      setLoggedin(true)
+      alert('successfully logged in')
+      navigate("/cats");
+    }
+    else {
+      localStorage.removeItem("token")
+      alert('failed to log in')
+    }
   }
 
 
