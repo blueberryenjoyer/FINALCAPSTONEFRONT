@@ -5,13 +5,13 @@ import { createCat } from "./api-adapters/adapters";
 const UploadCat = ({ user, setMagic }) => {
 
   async function doNewcat() { //this is where the actual data to be uploaded is saved! not exactly secure
-    let name = (document.getElementById('newcatName')).value //string
+    let catname = (document.getElementById('newcatName')).value //string
     let description = (document.getElementById('newcatDescription')).value //string
     let dangerous = false //bool
     console.log('logging user')
     console.log(user)
     let uploader = user //string
-    createCat(name, description, dangerous, uploader)
+    createCat(catname, description, dangerous, uploader)
 
 
 

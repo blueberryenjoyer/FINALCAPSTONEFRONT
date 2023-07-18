@@ -15,9 +15,6 @@ const NavBar = ({ loggedin, user }) => {
         <Link className="Navbar-link" to="/cats">
           Cats
         </Link>
-        <Link className="Navbar-link" to="/reviews">
-          Reviews
-        </Link>
 
         {loggedin ? (
           <>

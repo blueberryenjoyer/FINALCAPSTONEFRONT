@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 import UpdateCat from "./UpdateCat";
+import Reviews from './Reviews';
 
 
 
@@ -13,6 +14,7 @@ const SingleCat = ({ user }) => {
     const [cats, setCats] = useState([]);
     const [parnum, setParnum] = useState(0);
     const [toggle, setToggle] = useState(false)
+    const [toggle2, setToggle2] = useState(false)
     const [magic, setMagic] = useState([])
 
 
@@ -72,13 +74,23 @@ const SingleCat = ({ user }) => {
             console.log(error);
         }
     };
+    const letThereBeReviews = async () => {
+        try {
+            if (toggle2 === false) {
+                setToggle2(true)
+            }
+            else { setToggle2(false) }
+        } catch (error) {
+            console.log(error);
+        }
+    };
     const doDelete = async () => {
         try {
 
             console.log(magic)
             deleteCatById(parnum, user)
             console.log(magic)
-            setMagic(['hocus pocus updatus my componentus']) //to force rerender. yes its totally a hack lol
+            setMagic(['hocus pocus updatus my componentus']) //to force rerender. breaks sometimes. idk how it works anymore.
             console.log(magic)
         } catch (error) {
             console.log(error);
@@ -97,7 +109,7 @@ const SingleCat = ({ user }) => {
                 {cats.length > 0 ? (
                     cats.map((u) => ( //this was made for an array. it should have an array of 1 object.
                         <>
-                            <li className="cname">{u.name}</li>
+                            <li className="cname">{u.catname}</li>
                             <li >{"id: " + u.id}</li>
                             <li >{"description: " + u.description}</li>
                             <li >{"dangerous: " + u.dangerous}</li>
@@ -116,6 +128,7 @@ const SingleCat = ({ user }) => {
             <h1>
                 <button onClick={letThereBeUpdates}>update</button>
                 <button onClick={doDelete}>delete</button>
+                <button onClick={letThereBeReviews}>review</button>
             </h1>
             <div>
                 {toggle ? (//this makes the updater menu visible or invisible
@@ -128,6 +141,21 @@ const SingleCat = ({ user }) => {
                     </>
                 )}
             </div>
+
+            <div>
+                {toggle2 ? (//this makes the updater menu visible or invisible
+                    <>
+                        this will have a review creation menu soon!
+                    </>
+                ) : (
+                    <>
+
+                    </>
+                )}
+            </div>
+
+            <Reviews user={user} super_mario={perry.catId} />
+
         </div>
     )
 

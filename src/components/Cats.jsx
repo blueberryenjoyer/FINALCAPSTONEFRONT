@@ -64,7 +64,7 @@ const Cats = ({ user }) => {
                         reverseCats.map((u) => (
                             <>
                                 <li className="cname"><Link to={`/cat/${u.id}`}>
-                                    {u.name}
+                                    {u.catname}
                                 </Link></li>
                                 <li >{"description: " + u.description}</li>
                                 <li >{"dangerous: " + u.dangerous}</li>

@@ -19,15 +19,6 @@ export const grabCats = async () => {
     }
 };
 
-export const grabReviews = async () => {
-    try {
-        const response = await fetch(`${BASE_URL}/reviews`);
-        return response
-    } catch (error) {
-        console.log(error);
-    }
-};
-
 export const createUser = async (name, password, email) => {
     console.log(name, password, email)
 
@@ -96,8 +87,8 @@ export const auth = async (name) => {
 
 
 
-export const createCat = async (name, description, dangerous, uploader) => {
-    console.log(name, description, dangerous, uploader) //it will RECEIVE a user which is a string instead of a number for uploader
+export const createCat = async (catname, description, dangerous, uploader) => {
+    console.log(catname, description, dangerous, uploader) //it will RECEIVE a user which is a string instead of a number for uploader
 
     try {
         const response = await fetch(`${BASE_URL}/createcat`, {
@@ -107,7 +98,7 @@ export const createCat = async (name, description, dangerous, uploader) => {
                 "tokenHeaderKey": localStorage.getItem("token")
             },
             body: JSON.stringify({
-                name: name,
+                catname: catname,
                 description: description,
                 dangerous: dangerous,
                 uploader: uploader, //it will SEND a user which is a string instead of a number for uploader
@@ -133,8 +124,8 @@ export const grabCatById = async (id) => { //we are receiving a number
     }
 };
 
-export const updateCat = async (id, name, description, dangerous, uploader) => {
-    console.log(id, name, description, dangerous, uploader)
+export const updateCat = async (id, catname, description, dangerous, uploader) => {
+    console.log(id, catname, description, dangerous, uploader)
 
     try {
         const response = await fetch(`${BASE_URL}/updatecat`, {
@@ -145,7 +136,7 @@ export const updateCat = async (id, name, description, dangerous, uploader) => {
             },
             body: JSON.stringify({
                 id: id,
-                name: name,
+                catname: catname,
                 description: description,
                 dangerous: dangerous,
                 uploader: uploader,
@@ -176,6 +167,29 @@ export const deleteCatById = async (number, name) => { //currently doesnt work d
         const result = await response.json();
 
         return result.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const grabReviews = async () => {
+    try {
+        const response = await fetch(`${BASE_URL}/reviews`);
+        return response
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const grabFancyReviews = async (id) => {
+    try {
+        const response = await fetch(`${BASE_URL}/fancyreviews/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        return response
     } catch (error) {
         console.log(error);
     }
