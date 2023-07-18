@@ -1,9 +1,17 @@
 //this grabs all the users
 const BASE_URL = 'http://localhost:4343/api'
 
-export const grabUsers = async () => {
+export const grabUsers = async (name) => {
+    console.log(name) //ITS A PROMISE!! AAAAAAA
     try {
-        const response = await fetch(`${BASE_URL}/users`);
+        const response = await fetch(`${BASE_URL}/users`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "tokenHeaderKey": localStorage.getItem("token"),
+                "adminName": name
+            },
+        });
         return response
     } catch (error) {
         console.log(error);
@@ -195,6 +203,20 @@ export const grabFancyReviews = async (id) => {
     }
 };
 
+export const grabUserReviews = async (id) => {
+    try {
+        const response = await fetch(`${BASE_URL}/userreviews/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        return response
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const createReview = async (content, score, uploader, cat_id) => { //receive content, score, uploader, cat_id
     console.log(content, score, uploader, cat_id)
 
@@ -221,3 +243,32 @@ export const createReview = async (content, score, uploader, cat_id) => { //rece
         console.log(error);
     }
 };
+
+export const grabUserByName = async (name) => { //we are receiving a number
+    try {
+        console.log('we got to adapters')
+        console.log(name)
+        const response = await fetch(`${BASE_URL}/user/${name}`); //we are sending api/cat/50
+        console.log('we got through adapters')
+        return response
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const checkAdmin = async (name) => { //pass user, the global state
+    try {
+        console.log('this should be calling checkAdmin right now')
+        const response = await fetch(`${BASE_URL}/checkadmin`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "adminName": name
+            },
+        });
+        console.log('this is the checkadmin api call response. should be true or false')
+        const response2 = response.json()
+        console.log(response2)
+        return response2
+    } catch (err) { console.error(err); }
+}

@@ -11,8 +11,8 @@ const UploadCat = ({ user, setMagic }) => {
     console.log('logging user')
     console.log(user)
     let uploader = user //string
-    createCat(catname, description, dangerous, uploader)
-
+    const checkifitbroke = await createCat(catname, description, dangerous, uploader)
+    console.log(checkifitbroke)
 
 
     if (location.pathname == '/cats') {

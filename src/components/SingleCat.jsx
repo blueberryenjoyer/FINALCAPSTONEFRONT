@@ -53,10 +53,15 @@ const SingleCat = ({ user }) => {
                 console.log(result2)
                 setCats(result2)
                 setSinglecat(cats[0])
-                setCatowner(singlecat.uploader)
+                let bonuslolcat = result2[0]
+                let bonuslolcat2 = bonuslolcat.uploader
+                setCatowner(bonuslolcat2)
                 let newkittylol = Number(kittylol)
                 console.log(newkittylol)
                 setParnum(newkittylol)
+                console.log(singlecat)
+                console.log(catowner)
+
             } catch (error) {
                 console.log(error);
             }
@@ -94,8 +99,8 @@ const SingleCat = ({ user }) => {
         try {
 
             console.log(magic)
-            deleteCatById(parnum, user)
-            console.log(magic)
+            const checkifitbroke = await deleteCatById(parnum, user)
+            console.log(checkifitbroke)
             setMagic(['hocus pocus updatus my componentus']) //to force rerender. breaks sometimes. idk how it works anymore.
             console.log(magic)
         } catch (error) {

@@ -2,7 +2,7 @@ import React from "react";
 import { grabUsers } from "./api-adapters/adapters";
 import { useState, useEffect } from "react";
 
-const Users = () => {
+const Users = ({ user }) => {
 
 
     //psuedocode time
@@ -14,7 +14,8 @@ const Users = () => {
     useEffect(() => { //without useEffect surrounding, causes infinite loop. frameworks are magic
         const lol = async () => { //force async. i cant use await without sticking it in an async function, even if it looks silly
             try {
-                const results = await grabUsers()
+                console.log(user)
+                const results = await grabUsers(user)
                 const result2 = await results.json()
                 setUsers(result2)
             } catch (error) {
@@ -24,7 +25,7 @@ const Users = () => {
         lol() //now that i think about it, most of react is just this same goofy format of using state inside async functions.
     }, []);
 
-    console.log(users) //logs an array of ~4 objects but could be hundreds.
+    console.log(users)
 
     return (
         <div className={`users`}>

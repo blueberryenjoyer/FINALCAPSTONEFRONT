@@ -30,7 +30,7 @@ const Register = () => {
     <div className="Register">
 
 
-      <p>register. please note that registering does not automatically log in</p>
+      <p>register. please note that registering does not automatically log in. hey, i might change this later!</p>
       <input id='signupName' type="text" placeholder="name" />
       <input id='signupPassword' type="text" placeholder="password" />
       <input id='signupEmail' type="text" placeholder="email" />
