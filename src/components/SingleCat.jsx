@@ -154,7 +154,7 @@ const SingleCat = ({ user }) => {
                 )}
             </div>
 
-            <Reviews user={user} super_mario={perry.catId} />
+            <Reviews super_mario={perry.catId} parnum={parnum} />
 
         </div>
     )
