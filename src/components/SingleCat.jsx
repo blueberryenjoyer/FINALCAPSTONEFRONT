@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 import UpdateCat from "./UpdateCat";
 import Reviews from './Reviews';
+import CreateReview from "./CreateReview";
 
 
 
@@ -12,6 +13,8 @@ const SingleCat = ({ user }) => {
 
 
     const [cats, setCats] = useState([]);
+    const [singlecat, setSinglecat] = useState({});
+    const [catowner, setCatowner] = useState('');
     const [parnum, setParnum] = useState(0);
     const [toggle, setToggle] = useState(false)
     const [toggle2, setToggle2] = useState(false)
@@ -49,20 +52,23 @@ const SingleCat = ({ user }) => {
                 const result2 = await results.json()
                 console.log(result2)
                 setCats(result2)
+                setSinglecat(cats[0])
+                setCatowner(singlecat.uploader)
                 let newkittylol = Number(kittylol)
                 console.log(newkittylol)
                 setParnum(newkittylol)
             } catch (error) {
                 console.log(error);
             }
+
         };
         lol()
-    }, [parnum, magic]);
+
+    }, [parnum, magic]); //none of this actually updates correctly. it updates the second time.
 
 
 
     console.log(cats)
-    console.log(cats[0])
 
     const letThereBeUpdates = async () => {
         try {
@@ -97,6 +103,11 @@ const SingleCat = ({ user }) => {
         }
     };
 
+
+    console.log(singlecat)
+    console.log(catowner)
+    console.log('logs singlecat here')
+
     return (
 
 
@@ -125,15 +136,38 @@ const SingleCat = ({ user }) => {
 
 
 
+
+            <div>
+                {(user == catowner) ? (
+                    <>
+                        <button onClick={letThereBeUpdates}>update</button>
+                        <button onClick={doDelete}>delete</button>
+
+                        <div>
+                            {toggle ? (//this makes the updater menu visible or invisible
+                                <>
+                                    <UpdateCat user={user} super_mario={perry.catId} setMagic={setMagic} />
+                                </>
+                            ) : (
+                                <>
+
+                                </>
+                            )}
+                        </div>
+                    </>
+                ) : (
+                    <>
+
+                    </>
+                )}
+            </div>
             <h1>
-                <button onClick={letThereBeUpdates}>update</button>
-                <button onClick={doDelete}>delete</button>
                 <button onClick={letThereBeReviews}>review</button>
             </h1>
             <div>
-                {toggle ? (//this makes the updater menu visible or invisible
+                {toggle2 ? (//this makes the creater menu visible or invisible
                     <>
-                        <UpdateCat user={user} super_mario={perry.catId} setMagic={setMagic} />
+                        <CreateReview user={user} super_mario={perry.catId} setMagic={setMagic} />
                     </>
                 ) : (
                     <>
@@ -141,20 +175,7 @@ const SingleCat = ({ user }) => {
                     </>
                 )}
             </div>
-
-            <div>
-                {toggle2 ? (//this makes the updater menu visible or invisible
-                    <>
-                        this will have a review creation menu soon!
-                    </>
-                ) : (
-                    <>
-
-                    </>
-                )}
-            </div>
-
-            <Reviews super_mario={perry.catId} parnum={parnum} />
+            <Reviews super_mario={perry.catId} parnum={parnum} magic={magic} setMagic={setMagic} user={user} />
 
         </div>
     )
@@ -163,4 +184,3 @@ const SingleCat = ({ user }) => {
 }
 
 export default SingleCat;
-//

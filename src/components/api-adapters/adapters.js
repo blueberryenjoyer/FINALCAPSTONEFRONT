@@ -194,3 +194,30 @@ export const grabFancyReviews = async (id) => {
         console.log(error);
     }
 };
+
+export const createReview = async (content, score, uploader, cat_id) => { //receive content, score, uploader, cat_id
+    console.log(content, score, uploader, cat_id)
+
+    try {
+        const response = await fetch(`${BASE_URL}/createreview`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "tokenHeaderKey": localStorage.getItem("token")
+            },
+            body: JSON.stringify({
+                content: content,
+                score: score,
+                uploader: uploader,
+                cat_id: cat_id
+            }),
+        });
+        const result = await response.json();
+        console.log(result)
+        console.log('find error message in here!')
+
+        return result.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
