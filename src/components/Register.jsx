@@ -30,11 +30,11 @@ const Register = () => {
     <div className="Register">
 
 
-      <p>register. please note that registering does not automatically log in. hey, i might change this later!</p>
+      <p>register. please note that registering does not automatically log in</p>
       <input id='signupName' type="text" placeholder="name" />
       <input id='signupPassword' type="text" placeholder="password" />
       <input id='signupEmail' type="text" placeholder="email" />
-      <p className='submitRegister' onClick={doSignup}>submit. this is a button.</p>
+      <p className='submitRegister' onClick={doSignup}>register.</p>
 
     </div>
   );

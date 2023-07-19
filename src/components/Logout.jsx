@@ -44,28 +44,33 @@ const Logout = ({ setLoggedin, setUser, user, setAdmin }) => { //logout has beco
 
     return ( //and on the backend, handling bad inputs needs work. crashes the server. 
         <>
-            <div className={`users`}>
-                <ul>
-                    {users.length > 0 ? (
-                        users.map((u, i) => (
-                            <>
-                                <li className="uname">{u.name}</li>
-                                <li >{"id: " + u.id}</li>
-                                <li >{"email: " + u.email}</li>
-                                <li >{"admin: " + u.is_admin}</li>
-                            </>
-                        ))
-                    ) : (
-                        <li>loading</li>
-                    )}
-                </ul>
-            </div>
-            <div>
 
+            <div className="alloflogout">
+                <div className={`profileusers`}>
+                    <ul>
+                        {users.length > 0 ? (
+                            users.map((u, i) => (
+                                <>
+                                    <li className="uname">{u.name}</li>
+                                    <li >{"id: " + u.id}</li>
+                                    <li >{"email: " + u.email}</li>
+                                    <li >{"admin: " + u.is_admin}</li>
+                                </>
+                            ))
+                        ) : (
+                            <li>loading</li>
+                        )}
+                    </ul>
+                </div>
+                <div className="Logout">
+                    <p className='submitLogout' onClick={doLogout}>logout</p>
+                </div>
+                <div className="thanksforvisiting">
+                    thanks for visiting my website! leave a cat before you go!
+                </div>
             </div>
-            <div className="Logout">
-                <p className='submitLogout' onClick={doLogout}>logout. this is a button.</p>
-            </div>
+
+
         </>
     );
 };

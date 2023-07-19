@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import { updateReview, deleteReviewById } from "./api-adapters/adapters";
 
 
-const Reviews = ({ super_mario, parnum, magic, setMagic, user }) => {
+const Reviews = ({ super_mario, parnum, magic, setMagic, user, setToggle, setToggle2 }) => {
 
 
     //copied from Cats
 
     const [reviews, setReviews] = useState([]);
-    const [toggle, setToggle] = useState(false)
+    const [toggle3, setToggle3] = useState(false)
     const [myReview, setMyReview] = useState(0)
 
     useEffect(() => { //react is magic. thats because i dont understand it.
@@ -43,10 +43,10 @@ const Reviews = ({ super_mario, parnum, magic, setMagic, user }) => {
     const letThereBeUpdates = async () => {
         try {
             console.log(this)
-            if (toggle === false) {
-                setToggle(true)
+            if (toggle3 === false) {
+                setToggle3(true)
             }
-            else { setToggle(false) }
+            else { setToggle3(false) }
         } catch (error) {
             console.log(error);
         }
@@ -62,6 +62,9 @@ const Reviews = ({ super_mario, parnum, magic, setMagic, user }) => {
         let uploader = user //string
 
         const checkifitbroke = await updateReview(id, content, score, uploader)
+        setToggle(false)
+        setToggle2(false)
+        setToggle3(false)
         setMagic(['alakazam'])
         console.log(checkifitbroke)
     }
@@ -85,7 +88,7 @@ const Reviews = ({ super_mario, parnum, magic, setMagic, user }) => {
             </h1>
 
             <div>
-                {toggle ? (
+                {toggle3 ? (
                     <div className="UpdateReview">
 
 
@@ -105,11 +108,13 @@ const Reviews = ({ super_mario, parnum, magic, setMagic, user }) => {
                 <ul>
                     {reviews.length > 0 ? (
                         reviews.map((r) => (
-                            <>
+                            <div className="eachreview">
+
                                 <li className="rscore">{r.score + "/10"}</li>
                                 <li >{"user: " + r.name}</li>
-                                <li >{"id: " + r.id}</li>
                                 <li >{r.content}</li>
+
+
                                 {(r.name == user) ? (
                                     <>
                                         <button onClick={letThereBeUpdates}>update</button>
@@ -120,8 +125,9 @@ const Reviews = ({ super_mario, parnum, magic, setMagic, user }) => {
 
                                     </>
                                 )}
+                                <p> </p>
                                 <div></div>
-                            </>
+                            </div>
                         ))
                     ) : (
                         <li>this cat has no reviews</li>

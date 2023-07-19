@@ -40,7 +40,7 @@ const Login = ({ setLoggedin, setUser }) => {
       <p>login</p>
       <input id='loginName' type="text" placeholder="name" />
       <input id='loginPassword' type="text" placeholder="password" />
-      <p className='submitLogin' onClick={doLogin}>submit. this is a button.</p>
+      <p className='submitLogin' onClick={doLogin}>log in</p>
 
     </div>
   );

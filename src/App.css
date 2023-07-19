@@ -1,27 +1,74 @@
 .NavBar {
   display: flex;
   justify-content: space-around;
-  margin: 4em;
-  background-color: yellow;
+  height: 1.6em;
+  margin: 1.6em;
+  background-color: gold;
+  font-size: 1.6em;
+  border-radius: 1.6em;
 }
 
-.uname {
-  font-size: 2em;
-  background-color: lightcoral;
+.Navbar-link {
+  background-color: orange;
+  border-radius: 100%;
+  width: auto;
+}
+
+.alloflogout {
+  display: flex;
+  justify-content: space-around;
+  margin: 0px;
+  width: 100%;
+  height: 36em;
+  font-size: 20px;
+  background-color: grey;
+}
+
+.users {
+  background-color: lightgrey;
+  border-radius: 2em;
   display: inline-block;
+  margin: auto;
+  width: 50%;
+}
+
+.cats {
+  background-color: plum;
+  border-radius: 0em;
+  display: inline-block;
+  width: 100%;
 }
 
 .cname {
   font-size: 2em;
-  background-color: lightblue;
+  background-color: wheat;
   display: inline-block;
 }
 
-.rscore {
-  font-size: 2em;
-  background-color: greenyellow;
+.profileusers {
+  background-color: lightgrey;
+  border-radius: 2em;
   display: inline-block;
+  height: 8em;
 }
+
+.thanksforvisiting {
+  border-radius: 2em;
+  display: inline-block;
+  height: 2em;
+  align-self: flex-end;
+}
+
+.uname {
+  font-size: 2em;
+  border-radius: 10px;
+  display: inline-block;
+  background-color: darkred;
+}
+
+
+
+
 
 .submitRegister {
   font-size: 2em;
@@ -37,7 +84,9 @@
 
 .submitLogout {
   font-size: 2em;
-  background-color: darkgrey;
+  background-color: lightgrey;
+  padding: 0.1em;
+  border-radius: 0.6em;
   display: inline-block;
 }
 
@@ -63,4 +112,37 @@
   font-size: 2em;
   background-color: darkgrey;
   display: inline-block;
+}
+
+.Home {
+  display: flex;
+  margin: auto;
+  width: 50%;
+  font-size: 20px;
+}
+
+
+
+.reviews {
+  display: flex;
+  border-radius: 2em;
+  padding: 1em;
+  background-color: plum;
+  width: 50%;
+  font-size: 1.5em;
+}
+
+.eachreview {
+  border-radius: 1em;
+  padding: 1em;
+  background-color: rgb(179, 129, 179);
+  border: 1px;
+  border-style: dashed;
+}
+
+.rscore {
+  font-size: 2em;
+  background-color: wheat;
+  display: inline-block;
+  border-radius: 0.6em;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { updateCat } from "./api-adapters/adapters";
 
 
-const UpdateCat = ({ user, super_mario, setMagic }) => {
+const UpdateCat = ({ user, super_mario, setMagic, setToggle, setToggle2 }) => {
 
     async function doUpdatecat() { //this is where the actual data to be uploaded is saved! not exactly secure
 
@@ -12,8 +12,11 @@ const UpdateCat = ({ user, super_mario, setMagic }) => {
         let dangerous = false //bool
         console.log(user)
         let uploader = user //string
-        updateCat(id, catname, description, dangerous, uploader)
+        const isitbroken = await updateCat(id, catname, description, dangerous, uploader)
+        console.log(isitbroken)
 
+        setToggle(false)
+        setToggle2(false)
         setMagic(['hocus pocus! update my component!'])
     }
 

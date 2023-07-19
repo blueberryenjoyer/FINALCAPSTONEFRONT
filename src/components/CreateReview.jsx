@@ -2,7 +2,7 @@ import React from "react";
 import { createReview } from "./api-adapters/adapters";
 
 
-const CreateReview = ({ user, super_mario, setMagic }) => {
+const CreateReview = ({ user, super_mario, setMagic, setToggle, setToggle2 }) => {
 
   async function doNewreview() { //receive content, score, uploader, cat_id
     let content = (document.getElementById('newreviewContent')).value //string
@@ -16,6 +16,9 @@ const CreateReview = ({ user, super_mario, setMagic }) => {
     console.log('checked if it broke')
     alert(checkifitbroke)
 
+
+    setToggle(false)
+    setToggle2(false)
     setMagic(['hocus pocus! update my component! 2']) //i dont know why this works. or why it doesnt work. its magic.
   }
 

@@ -147,7 +147,7 @@ const SingleCat = ({ user }) => {
                         <div>
                             {toggle ? (//this makes the updater menu visible or invisible
                                 <>
-                                    <UpdateCat user={user} super_mario={perry.catId} setMagic={setMagic} />
+                                    <UpdateCat user={user} super_mario={perry.catId} setMagic={setMagic} setToggle={setToggle} setToggle2={setToggle2} />
                                 </>
                             ) : (
                                 <>
@@ -168,7 +168,7 @@ const SingleCat = ({ user }) => {
             <div>
                 {toggle2 ? (//this makes the creater menu visible or invisible
                     <>
-                        <CreateReview user={user} super_mario={perry.catId} setMagic={setMagic} />
+                        <CreateReview user={user} super_mario={perry.catId} setMagic={setMagic} setToggle={setToggle} setToggle2={setToggle2} />
                     </>
                 ) : (
                     <>
@@ -176,7 +176,7 @@ const SingleCat = ({ user }) => {
                     </>
                 )}
             </div>
-            <Reviews super_mario={perry.catId} parnum={parnum} magic={magic} setMagic={setMagic} user={user} />
+            <Reviews super_mario={perry.catId} parnum={parnum} magic={magic} setMagic={setMagic} user={user} setToggle={setToggle} setToggle2={setToggle2} />
 
         </div>
     )
