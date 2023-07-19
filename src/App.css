@@ -58,3 +58,9 @@
   background-color: darkgrey;
   display: inline-block;
 }
+
+.submitUpdatereview {
+  font-size: 2em;
+  background-color: darkgrey;
+  display: inline-block;
+}

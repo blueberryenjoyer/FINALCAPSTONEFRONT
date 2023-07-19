@@ -203,9 +203,9 @@ export const grabFancyReviews = async (id) => {
     }
 };
 
-export const grabUserReviews = async (id) => {
+export const grabUserReviews = async (name) => {
     try {
-        const response = await fetch(`${BASE_URL}/userreviews/${id}`, {
+        const response = await fetch(`${BASE_URL}/userreviews/${name}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -267,8 +267,65 @@ export const checkAdmin = async (name) => { //pass user, the global state
             },
         });
         console.log('this is the checkadmin api call response. should be true or false')
-        const response2 = response.json()
+        const response2 = await response.json()
         console.log(response2)
         return response2
     } catch (err) { console.error(err); }
 }
+
+export const updateReview = async (id, content, score, uploader) => {
+    console.log(id, content, score, uploader)
+    try {
+        const response = await fetch(`${BASE_URL}/updatereview`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "tokenHeaderKey": localStorage.getItem("token")
+            },
+            body: JSON.stringify({
+                id: id,
+                content: content,
+                score: score,
+                uploader: uploader,
+            }),
+        });
+        const result = await response.json();
+
+        return result.data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const grabReviewById = async (id) => { //we are receiving a number
+    try {
+        console.log('we got to review by id')
+        const response = await fetch(`${BASE_URL}/cat/${id}`); //TEMPORARY
+        console.log('we got through review by id')
+        return response
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const deleteReviewById = async (number, name) => {
+    console.log(number, name)
+    try {
+        const response = await fetch(`${BASE_URL}/deletereview`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "tokenHeaderKey": localStorage.getItem("token")
+            },
+            body: JSON.stringify({
+                number: number,
+                name: name,
+            }),
+        });
+        const result = await response.json();
+
+        return result.data;
+    } catch (error) {
+        console.log(error);
+    }
+};

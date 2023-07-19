@@ -13,7 +13,6 @@ const SingleCat = ({ user }) => {
 
 
     const [cats, setCats] = useState([]);
-    const [singlecat, setSinglecat] = useState({});
     const [catowner, setCatowner] = useState('');
     const [parnum, setParnum] = useState(0);
     const [toggle, setToggle] = useState(false)
@@ -52,14 +51,12 @@ const SingleCat = ({ user }) => {
                 const result2 = await results.json()
                 console.log(result2)
                 setCats(result2)
-                setSinglecat(cats[0])
                 let bonuslolcat = result2[0]
                 let bonuslolcat2 = bonuslolcat.uploader
                 setCatowner(bonuslolcat2)
                 let newkittylol = Number(kittylol)
                 console.log(newkittylol)
                 setParnum(newkittylol)
-                console.log(singlecat)
                 console.log(catowner)
 
             } catch (error) {
@@ -109,7 +106,6 @@ const SingleCat = ({ user }) => {
     };
 
 
-    console.log(singlecat)
     console.log(catowner)
     console.log('logs singlecat here')
 

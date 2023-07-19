@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { grabUserByName } from "./api-adapters/adapters";
 import { useState, useEffect } from "react";
-import UserReviews from "./UserReviews";
+
 
 
 const Logout = ({ setLoggedin, setUser, user, setAdmin }) => { //logout has become the profile page, somehow
@@ -61,7 +61,7 @@ const Logout = ({ setLoggedin, setUser, user, setAdmin }) => { //logout has beco
                 </ul>
             </div>
             <div>
-                <UserReviews user={user} />
+
             </div>
             <div className="Logout">
                 <p className='submitLogout' onClick={doLogout}>logout. this is a button.</p>

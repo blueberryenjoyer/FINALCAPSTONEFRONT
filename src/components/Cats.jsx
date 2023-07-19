@@ -49,12 +49,14 @@ const Cats = ({ user }) => {
 
 
             <button onClick={letThereBeCats}>create new cats</button>
-            {!toggle ? (
+            {toggle ? (
+
+                <UploadCat user={user} setMagic={setMagic} />
+
+            ) : (
                 <>
 
                 </>
-            ) : (
-                <UploadCat user={user} setMagic={setMagic} />
             )}
 
 
